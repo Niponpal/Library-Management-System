@@ -4,8 +4,8 @@ namespace LibraryMS.Models;
 
 public class BookApplication: BaseEntity
 {
+    public Guid Id { get; set; }
     public string StudentEmail { get; set; } = string.Empty;
-
     public string StudentIdCardNo { get; set; } = string.Empty;
     public long StudentId { get; set; }
     public String Status { get; set; } = "Pending"; // Pending, Approved, Rejected
