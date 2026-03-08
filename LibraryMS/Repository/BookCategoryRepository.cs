@@ -27,8 +27,6 @@ public class BookCategoryRepository: IBookCategoryRepository
         }
         return null!;
     }
-
-
     public IEnumerable<SelectListItem> Dropdown()
     {
         var data = _context.BookCategories.Select(x => new SelectListItem

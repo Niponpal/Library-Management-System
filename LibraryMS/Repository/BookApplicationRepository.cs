@@ -66,6 +66,7 @@ namespace LibraryMS.Repository
                 data.FineAmount = bookApplication.FineAmount;
                 data.IssueDate = bookApplication.IssueDate;
                 data.ReturnDate = bookApplication.ReturnDate;
+                data.CreatedAt = bookApplication.CreatedAt;
                 //data.BookId = bookApplication.BookId;
                 await _context.SaveChangesAsync(cancellationToken);
                 return data;
