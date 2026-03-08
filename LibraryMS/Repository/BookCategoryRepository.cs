@@ -68,6 +68,7 @@ public class BookCategoryRepository: IBookCategoryRepository
             data.CategoryName = bookCategory.CategoryName;
             data.IsActive = bookCategory.IsActive;
             data.CreatedAt = bookCategory.CreatedAt;
+            data.Books = bookCategory.Books;
             await _context.SaveChangesAsync(cancellationToken);
             return data;
 
