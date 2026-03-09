@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Register repositories
 builder.Services.AddScoped<IBookApplicationRepository, BookApplicationRepository>();
 builder.Services.AddScoped<IBookCategoryRepository, BookCategoryRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
 
