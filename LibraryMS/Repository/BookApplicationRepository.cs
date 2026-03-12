@@ -15,17 +15,17 @@ namespace LibraryMS.Repository
 
         public async Task<BookApplication> AddBookApplicationAsync(BookApplication bookApplication, CancellationToken cancellationToken)
         {
-            await _context.BookApplications.AddAsync(bookApplication, cancellationToken);
+            await _context.bookApplications.AddAsync(bookApplication, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return bookApplication;
         }
 
         public async Task<BookApplication> DeleteBookApplicationAsync(int id, CancellationToken cancellationToken)
         {
-            var data = await _context.BookApplications.FindAsync(id);
+            var data = await _context.bookApplications.FindAsync(id);
             if (data != null)
             {
-                _context.BookApplications.Remove(data);
+                _context.bookApplications.Remove(data);
                 await _context.SaveChangesAsync(cancellationToken);
                 return data;
             }
@@ -35,7 +35,7 @@ namespace LibraryMS.Repository
 
         public async Task<IEnumerable<BookApplication>> GetAllBookApplicationAsync(CancellationToken cancellationToken)
         {
-            var data = await _context.BookApplications.ToListAsync(cancellationToken);
+            var data = await _context.bookApplications.ToListAsync(cancellationToken);
             if (data != null)
             {
                 return data;
@@ -45,7 +45,7 @@ namespace LibraryMS.Repository
 
         public async Task<BookApplication> GetBookApplicationByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var data = await _context.BookApplications.FindAsync(id);
+            var data = await _context.bookApplications.FindAsync(id);
             if (data != null)
             {
                 return data;
@@ -56,7 +56,7 @@ namespace LibraryMS.Repository
 
         public async Task<BookApplication> UpdateBookApplicationAsync(BookApplication bookApplication, CancellationToken cancellationToken)
         {
-            var data = await _context.BookApplications.FindAsync(bookApplication.Id);
+            var data = await _context.bookApplications.FindAsync(bookApplication.Id);
             if (data != null)
             {
                 data.StudentEmail = bookApplication.StudentEmail;
