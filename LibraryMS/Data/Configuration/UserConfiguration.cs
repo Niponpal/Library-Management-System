@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using static LibraryManagementSystem.Auth_IdentityModel.IdentityModel;
+using static LibraryMS.Auth_IdentityModel.IdentityModel;
 
 namespace LibraryManagementSystem.Data.Configuration;
 
