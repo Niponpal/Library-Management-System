@@ -14,5 +14,5 @@ public class BookApplication: BaseEntity
     public DateTime ReturnDate { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public Book? Book { get; set; }
-    public int BookId { get; set; }
+    public long BookId { get; set; }
 }

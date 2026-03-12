@@ -1,5 +1,6 @@
 using LibraryMS;
 using LibraryMS.Data;
+using LibraryMS.Helper;
 using LibraryMS.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,8 @@ builder.Services.AddIdentity<User, Role>(options =>
 .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddTransient<ISignInHelper, SignInHelper>();
 
 
 

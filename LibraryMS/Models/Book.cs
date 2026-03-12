@@ -11,7 +11,7 @@ public class Book: BaseEntity
     public int TotalCopies { get; set; }
     public int AvailableCopies { get; set; }
 
-    public int CategoryId { get; set; }
+    public long CategoryId { get; set; }
     public BookCategory? bookCategory { get; set; }
     public ICollection<BookApplication> BookApplications { get; set; }
 }
