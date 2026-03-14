@@ -8,7 +8,10 @@ namespace LibraryMS.Repository;
 public class BookCategoryRepository: IBookCategoryRepository
 {
     private readonly ApplicationDbContext _context;
-
+    public BookCategoryRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
     public async Task<BookCategory> AddBookCategoryAsync(BookCategory bookCategory, CancellationToken cancellationToken)
     {
         await _context.BookCategories.AddAsync(bookCategory, cancellationToken);
@@ -27,6 +30,8 @@ public class BookCategoryRepository: IBookCategoryRepository
         }
         return null!;
     }
+
+
     public IEnumerable<SelectListItem> Dropdown()
     {
         var data = _context.BookCategories.Select(x => new SelectListItem
@@ -66,7 +71,6 @@ public class BookCategoryRepository: IBookCategoryRepository
             data.CategoryName = bookCategory.CategoryName;
             data.IsActive = bookCategory.IsActive;
             data.CreatedAt = bookCategory.CreatedAt;
-            data.Books = bookCategory.Books;
             await _context.SaveChangesAsync(cancellationToken);
             return data;
 
