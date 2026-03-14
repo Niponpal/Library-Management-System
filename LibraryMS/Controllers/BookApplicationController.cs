@@ -26,7 +26,9 @@ public class BookApplicationController : Controller
     [HttpGet]
     public async Task<IActionResult> CreateOrEdit(int id, CancellationToken cancellationToken)
     {
-        ViewData["BookId"] = _bookRepository.Dropdown();
+        //ViewData["BookId"] = _bookRepository.Dropdown();
+        ViewBag.BookId = _bookRepository.Dropdown();
+
         if (id == 0)
         {
 
@@ -46,7 +48,8 @@ public class BookApplicationController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateOrEdit(BookApplication bookApplication, CancellationToken cancellationToken)
     {
-        ViewData["BookId"] = _bookRepository.Dropdown();
+        //ViewData["BookId"] = _bookRepository.Dropdown();
+        ViewBag.BookId = _bookRepository.Dropdown();
         if (bookApplication.Id == 0)
         {
             ViewData["BookId"] = _bookRepository.Dropdown();

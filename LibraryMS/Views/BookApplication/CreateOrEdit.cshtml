@@ -73,7 +73,7 @@
                         <label asp-for="BookId" class="form-label fw-semibold">Book</label>
                         <div class="input-group input-group-lg">
                             <span class="input-group-text"><i class="bi bi-book"></i></span>
-                            <select asp-for="BookId" class="form-select" asp-items="@ViewBag.BookId" required>
+                            <select asp-for="BookId" class="form-select" asp-items="ViewBag.BookId" required>
                                 <option value="">-- Select Book --</option>
                             </select>
                         </div>

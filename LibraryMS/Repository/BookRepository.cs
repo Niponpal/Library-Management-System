@@ -41,6 +41,7 @@ public class BookRepository : IBookRepository
         return data;
     }
 
+
     public async Task<IEnumerable<Book>> GetAllBookAsync(CancellationToken cancellationToken)
     {
         var data = await _context.Books.ToListAsync(cancellationToken);
