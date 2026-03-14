@@ -1,4 +1,5 @@
-﻿using LibraryMS.Models;
+﻿using LibraryMS.Helper;
+using LibraryMS.Models;
 using LibraryMS.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,13 +9,13 @@ public class BookApplicationController : Controller
 {
     private readonly IBookApplicationRepository _bookApplicationRepository;
     private readonly IBookRepository _bookRepository;
+    private readonly ISignInHelper _signInHelper;
 
-
-    public BookApplicationController(IBookApplicationRepository bookApplicationRepository, IBookRepository bookRepository)
+    public BookApplicationController(IBookApplicationRepository bookApplicationRepository, IBookRepository bookRepository, ISignInHelper signInHelper)
     {
         _bookApplicationRepository = bookApplicationRepository;
         _bookRepository = bookRepository;
-
+        _signInHelper = signInHelper;
     }
 
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
@@ -49,7 +50,7 @@ public class BookApplicationController : Controller
         if (bookApplication.Id == 0)
         {
             ViewData["BookId"] = _bookRepository.Dropdown();
-            //bookApplication.StudentId = _signInHelper.UserId ?? 1;
+            bookApplication.StudentId = _signInHelper.UserId ?? 1;
             bookApplication.Status = "Pending";
             await _bookApplicationRepository.AddBookApplicationAsync(bookApplication, cancellationToken);
             return RedirectToAction("Index");
@@ -86,8 +87,8 @@ public class BookApplicationController : Controller
         if (id > 0)
         {
             var data = await _bookRepository.GetBookByIdAsync(id, cancellationToken);
-            //bookApplication.BookId = data.Id;
-            //bookApplication.StudentId = _signInHelper.UserId ?? 1;
+            bookApplication.BookId = data.Id;
+            bookApplication.StudentId = _signInHelper.UserId ?? 1;
 
         }
         return View(bookApplication);

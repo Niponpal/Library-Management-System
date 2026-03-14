@@ -6,6 +6,7 @@ namespace LibraryMS.Controllers;
 
 public class BookCategoryController : Controller
 {
+
     private readonly IBookCategoryRepository _bookCategoryRepository;
     public BookCategoryController(IBookCategoryRepository bookCategoryRepository)
     {
