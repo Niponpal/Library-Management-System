@@ -7,12 +7,10 @@ namespace LibraryMS.Repository
     public class BookApplicationRepository: IBookApplicationRepository
     {
         private readonly ApplicationDbContext _context;
-
         public BookApplicationRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-
         public async Task<BookApplication> AddBookApplicationAsync(BookApplication bookApplication, CancellationToken cancellationToken)
         {
             await _context.bookApplications.AddAsync(bookApplication, cancellationToken);
@@ -35,7 +33,7 @@ namespace LibraryMS.Repository
 
         public async Task<IEnumerable<BookApplication>> GetAllBookApplicationAsync(CancellationToken cancellationToken)
         {
-            var data = await _context.bookApplications.ToListAsync(cancellationToken);
+            var data = await _context.bookApplications.Include(x => x.Book).ToListAsync(cancellationToken);
             if (data != null)
             {
                 return data;
@@ -66,13 +64,11 @@ namespace LibraryMS.Repository
                 data.FineAmount = bookApplication.FineAmount;
                 data.IssueDate = bookApplication.IssueDate;
                 data.ReturnDate = bookApplication.ReturnDate;
-                data.CreatedAt = bookApplication.CreatedAt;
                 //data.BookId = bookApplication.BookId;
                 await _context.SaveChangesAsync(cancellationToken);
                 return data;
             }
             return null!;
         }
-
     }
 }
