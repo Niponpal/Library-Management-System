@@ -1,0 +1,270 @@
+﻿@* Views/Dashboard/Index.cshtml *@
+
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["ActivePage"] = "Dashboard";
+}
+
+<!-- Page Title -->
+<div class="d-flex justify-content-between align-items-center mb-5">
+    <h3 class="mb-0 fw-bold text-primary">Dashboard Overview</h3>
+    <div class="d-flex gap-2">
+        <a asp-controller="Book" asp-action="CreateOrEdit" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-circle me-2"></i>Add New Book
+        </a>
+        <button class="btn btn-outline-secondary shadow-sm" onclick="window.print()">
+            <i class="bi bi-printer me-2"></i>Print
+        </button>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row g-4 mb-5">
+    <div class="col-xl-3 col-md-6">
+        <div class="dashboard-card h-100">
+            <div class="card-body p-4">
+                <div class="card-icon bg-primary mb-3">
+                    <i class="bi bi-book"></i>
+                </div>
+                <h5 class="card-title text-muted fw-medium">Total Books</h5>
+                <h2 class="mb-2 fw-bold text-primary">12,458</h2>
+                <p class="text-success small mb-0">
+                    <i class="bi bi-arrow-up me-1"></i>5.2% increase from last month
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="dashboard-card h-100">
+            <div class="card-body p-4">
+                <div class="card-icon" style="background: #27ae60;">
+                    <i class="bi bi-people"></i>
+                </div>
+                <h5 class="card-title text-muted fw-medium">Active Members</h5>
+                <h2 class="mb-2 fw-bold text-primary">1,248</h2>
+                <p class="text-success small mb-0">
+                    <i class="bi bi-arrow-up me-1"></i>8.7% increase from last month
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="dashboard-card h-100">
+            <div class="card-body p-4">
+                <div class="card-icon" style="background: #f39c12;">
+                    <i class="bi bi-arrow-left-right"></i>
+                </div>
+                <h5 class="card-title text-muted fw-medium">Books on Loan</h5>
+                <h2 class="mb-2 fw-bold text-primary">324</h2>
+                <p class="text-danger small mb-0">
+                    <i class="bi bi-arrow-down me-1"></i>2.3% decrease from last week
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="dashboard-card h-100">
+            <div class="card-body p-4">
+                <div class="card-icon bg-danger mb-3">
+                    <i class="bi bi-exclamation-triangle"></i>
+                </div>
+                <h5 class="card-title text-muted fw-medium">Overdue Books</h5>
+                <h2 class="mb-2 fw-bold text-primary">18</h2>
+                <p class="text-danger small mb-0">
+                    <i class="bi bi-exclamation-circle me-1"></i>Requires immediate attention
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activity Tables -->
+<div class="row g-4 mb-5">
+    <div class="col-lg-6">
+        <div class="data-table">
+            <div class="d-flex justify-content-between align-items-center p-4 border-bottom">
+                <h5 class="mb-0 fw-semibold">Recent Book Loans</h5>
+                <a href="#" class="text-decoration-none small">View All →</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead>
+                        <tr>
+                            <th class="text-muted fw-medium">Book Title</th>
+                            <th class="text-muted fw-medium">Member</th>
+                            <th class="text-muted fw-medium">Due Date</th>
+                            <th class="text-muted fw-medium">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The Great Gatsby</td>
+                            <td>John Smith</td>
+                            <td>15 Dec 2025</td>
+                            <td><span class="badge bg-success text-white px-3 py-2">On Time</span></td>
+                        </tr>
+                        <tr>
+                            <td>To Kill a Mockingbird</td>
+                            <td>Sarah Johnson</td>
+                            <td>10 Dec 2025</td>
+                            <td><span class="badge bg-danger text-white px-3 py-2">Overdue</span></td>
+                        </tr>
+                        <tr>
+                            <td>1984</td>
+                            <td>Michael Brown</td>
+                            <td>20 Dec 2025</td>
+                            <td><span class="badge bg-success text-white px-3 py-2">On Time</span></td>
+                        </tr>
+                        <tr>
+                            <td>Pride and Prejudice</td>
+                            <td>Emily Davis</td>
+                            <td>30 Dec 2025</td>
+                            <td><span class="badge bg-warning text-dark px-3 py-2">Due Soon</span></td>
+                        </tr>
+                        <tr>
+                            <td>The Catcher in the Rye</td>
+                            <td>Robert Wilson</td>
+                            <td>05 Jan 2026</td>
+                            <td><span class="badge bg-success text-white px-3 py-2">On Time</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="data-table">
+            <div class="d-flex justify-content-between align-items-center p-4 border-bottom">
+                <h5 class="mb-0 fw-semibold">Recently Added Books</h5>
+                <a href="#" class="text-decoration-none small">View All →</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead>
+                        <tr>
+                            <th class="text-muted fw-medium">Title</th>
+                            <th class="text-muted fw-medium">Author</th>
+                            <th class="text-muted fw-medium">Category</th>
+                            <th class="text-muted fw-medium">Added Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The Midnight Library</td>
+                            <td>Matt Haig</td>
+                            <td>Fiction</td>
+                            <td>20 Dec 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Atomic Habits</td>
+                            <td>James Clear</td>
+                            <td>Self-Help</td>
+                            <td>18 Dec 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Klara and the Sun</td>
+                            <td>Kazuo Ishiguro</td>
+                            <td>Science Fiction</td>
+                            <td>15 Dec 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Project Hail Mary</td>
+                            <td>Andy Weir</td>
+                            <td>Science Fiction</td>
+                            <td>10 Dec 2025</td>
+                        </tr>
+                        <tr>
+                            <td>The Code Breaker</td>
+                            <td>Walter Isaacson</td>
+                            <td>Biography</td>
+                            <td>05 Dec 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4 fw-semibold">Quick Actions</h5>
+                <div class="row g-3 text-center">
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <a asp-controller="Books" asp-action="Create" class="btn btn-outline-primary w-100 py-4 d-flex flex-column align-items-center shadow-sm hover-lift">
+                            <i class="bi bi-plus-circle mb-2" style="font-size: 28px;"></i>
+                            <span class="fw-medium">Add Book</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <a asp-controller="Members" asp-action="Create" class="btn btn-outline-success w-100 py-4 d-flex flex-column align-items-center shadow-sm hover-lift">
+                            <i class="bi bi-person-plus mb-2" style="font-size: 28px;"></i>
+                            <span class="fw-medium">New Member</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <a asp-controller="BookApplication" asp-action="Create" class="btn btn-outline-warning w-100 py-4 d-flex flex-column align-items-center shadow-sm hover-lift">
+                            <i class="bi bi-arrow-left-right mb-2" style="font-size: 28px;"></i>
+                            <span class="fw-medium">Issue Book</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <a href="#" class="btn btn-outline-info w-100 py-4 d-flex flex-column align-items-center shadow-sm hover-lift">
+                            <i class="bi bi-clock-history mb-2" style="font-size: 28px;"></i>
+                            <span class="fw-medium">Check Overdue</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <a asp-controller="Reports" asp-action="Index" class="btn btn-outline-secondary w-100 py-4 d-flex flex-column align-items-center shadow-sm hover-lift">
+                            <i class="bi bi-printer mb-2" style="font-size: 28px;"></i>
+                            <span class="fw-medium">Print Reports</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <a asp-controller="Settings" asp-action="Index" class="btn btn-outline-dark w-100 py-4 d-flex flex-column align-items-center shadow-sm hover-lift">
+                            <i class="bi bi-gear mb-2" style="font-size: 28px;"></i>
+                            <span class="fw-medium">Settings</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Optional: Add subtle hover lift effect
+        document.querySelectorAll('.hover-lift').forEach(btn => {
+            btn.addEventListener('mouseenter', () => btn.style.transform = 'translateY(-4px)');
+            btn.addEventListener('mouseleave', () => btn.style.transform = 'translateY(0)');
+        });
+    </script>
+}
+
+<style>
+    /* Extra smooth hover for quick action buttons */
+    .hover-lift {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+    }
+
+        .hover-lift:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+        }
+
+    /* Badge styling consistency */
+    .badge {
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+</style>
