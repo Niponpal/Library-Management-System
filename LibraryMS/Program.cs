@@ -2,6 +2,7 @@ using LibraryMS;
 using LibraryMS.Data;
 using LibraryMS.Helper;
 using LibraryMS.Repository;
+using LibraryMS.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using static LibraryMS.Auth_IdentityModel.IdentityModel;
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IBookApplicationRepository, BookApplicationRepository>();
 builder.Services.AddScoped<IBookCategoryRepository, BookCategoryRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IRolePermissionService, RolePermissionService>();
 
 
 
