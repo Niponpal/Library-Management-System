@@ -21,6 +21,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             EmailConfirmed = true,
             SecurityStamp = Guid.NewGuid().ToString()
         }, new User
+
         {
             Id = 2,
             Email = "employee@localhost.com",
