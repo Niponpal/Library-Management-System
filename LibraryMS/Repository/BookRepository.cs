@@ -19,7 +19,7 @@ public class BookRepository : IBookRepository
         return book;
     }
 
-    public async Task<Book> DeleteBooktAsync(int id, CancellationToken cancellationToken)
+    public async Task<Book> DeleteBooktAsync(long id, CancellationToken cancellationToken)
     {
         var data = await _context.Books.FindAsync(id);
         if (data != null)
@@ -53,14 +53,10 @@ public class BookRepository : IBookRepository
 
     }
 
-    public async Task<Book> GetBookByIdAsync(int id, CancellationToken cancellationToken)
+    public async Task<Book> GetBookByIdAsync(long id, CancellationToken cancellationToken)
     {
         var data = await _context.Books.FindAsync(id);
-        if (data != null)
-        {
-            return data;
-        }
-        return null!;
+        return data!;
     }
 
     public async Task<Book> UpdateBookAsync(Book book, CancellationToken cancellationToken)
