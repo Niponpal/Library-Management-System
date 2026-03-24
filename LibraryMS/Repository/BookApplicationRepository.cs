@@ -18,7 +18,7 @@ namespace LibraryMS.Repository
             return bookApplication;
         }
 
-        public async Task<BookApplication> DeleteBookApplicationAsync(int id, CancellationToken cancellationToken)
+        public async Task<BookApplication> DeleteBookApplicationAsync(long id, CancellationToken cancellationToken)
         {
             var data = await _context.bookApplications.FindAsync(id);
             if (data != null)
@@ -41,7 +41,7 @@ namespace LibraryMS.Repository
             return null;
         }
 
-        public async Task<BookApplication> GetBookApplicationByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<BookApplication> GetBookApplicationByIdAsync(long id, CancellationToken cancellationToken)
         {
             var data = await _context.bookApplications.FindAsync(id);
             if (data != null)
