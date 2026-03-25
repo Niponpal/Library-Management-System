@@ -96,4 +96,11 @@ public class BookApplicationController : Controller
         }
         return View(bookApplication);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Memeber(CancellationToken cancellationToken)
+    {
+        var data = await _bookApplicationRepository.GetAllBookApplicationAsync(cancellationToken);
+        return View(data);
+    }
 }

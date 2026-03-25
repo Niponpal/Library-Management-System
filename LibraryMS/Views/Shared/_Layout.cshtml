@@ -300,7 +300,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
                         <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile"><i class="bi bi-person me-2"></i>Profile</a></li>
-                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Settings"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Dashbaord"><i class="bi bi-gear me-2"></i>Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" asp-controller="account" asp-action="login"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                     </ul>
@@ -321,7 +321,7 @@
             {
                 <li><a asp-controller="Dashboard" asp-action="Index" class="@(ViewContext.RouteData.Values["ActivePage"]?.ToString() == "Dashboard" ? "active" : "")"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
                 <li><a asp-controller="Book" asp-action="Index" class="@(ViewContext.RouteData.Values["ActivePage"]?.ToString() == "Books" ? "active" : "")"><i class="bi bi-book"></i> Books Management</a></li>
-                <li><a asp-controller="Members" asp-action="Index" class="@(ViewContext.RouteData.Values["ActivePage"]?.ToString() == "Members" ? "active" : "")"><i class="bi bi-people"></i> Members</a></li>
+                <li><a asp-controller="BookApplication" asp-action="Memeber" class="@(ViewContext.RouteData.Values["ActivePage"]?.ToString() == "Members" ? "active" : "")"><i class="bi bi-people"></i> Members</a></li>
                 <li><a asp-controller="BookCategory" asp-action="Index" class="@(ViewContext.RouteData.Values["ActivePage"]?.ToString() == "BookCategory" ? "active" : "")"><i class="bi bi-tags"></i> Book Categories</a></li>
                 <li><a asp-controller="BookApplication" asp-action="Index" class="@(ViewContext.RouteData.Values["ActivePage"]?.ToString() == "BookApplication" ? "active" : "")"><i class="bi bi-journal-check"></i> Book Applications</a></li>
                 <li><a asp-controller="Reports" asp-action="Index" class="@(ViewContext.RouteData.Values["ActivePage"]?.ToString() == "Reports" ? "active" : "")"><i class="bi bi-bar-chart-line"></i> Reports</a></li>
