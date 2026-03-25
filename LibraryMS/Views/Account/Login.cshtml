@@ -3,425 +3,724 @@
     Layout = null;
 }
 
-<!-- Bootstrap 5 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | Library Management System</title>
 
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-    :root {
-        --primary-teal: #007c89;
-        --primary-teal-dark: #006471;
-        --primary-teal-light: rgba(0, 124, 137, 0.1);
-        --gray-100: #f8f9fa;
-        --gray-200: #e9ecef;
-        --gray-300: #dee2e6;
-        --gray-600: #6c757d;
-        --gray-800: #343a40;
-    }
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-    body {
-        background-color: #f6f6f4;
-        min-height: 100vh;
-        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        align-items: center;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 
-    .login-wrapper {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding: 1rem;
-    }
-
-    .login-card {
-        background: white;
-        border-radius: 1rem;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        border: none;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-
-        .login-card:hover {
-            transform: translateY(-5px);
+    <style>
+        /* ---------- PROFESSIONAL RGB COLOR SCHEME & ANIMATIONS ---------- */
+        :root {
+            --primary-rgb: 30, 58, 95; /* Deep navy blue */
+            --primary-dark-rgb: 15, 43, 68;
+            --accent-rgb: 59, 130, 246; /* Bright blue accent */
+            --text-primary-rgb: 30, 41, 59;
+            --text-secondary-rgb: 71, 85, 105;
+            --text-muted-rgb: 100, 116, 139;
+            --border-light-rgb: 226, 232, 240;
+            --bg-surface-rgb: 255, 255, 255;
+            --bg-body-rgb: 248, 250, 252;
+            --success-rgb: 16, 185, 129;
+            --danger-rgb: 239, 68, 68;
         }
 
-    .login-header {
-        background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
-        padding: 2.5rem 2rem;
-        text-align: center;
-        color: white;
-    }
-
-    .login-icon {
-        width: 70px;
-        height: 70px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1.5rem;
-        font-size: 1.75rem;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .login-header h1 {
-        font-weight: 700;
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .login-header p {
-        opacity: 0.9;
-        margin: 0;
-        font-size: 0.95rem;
-    }
-
-    .login-body {
-        padding: 2.5rem 2rem;
-    }
-
-    .form-label {
-        font-weight: 600;
-        color: var(--gray-800);
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-        .form-label i {
-            color: var(--primary-teal);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-    .input-group-custom {
-        position: relative;
-        margin-bottom: 1.5rem;
-    }
-
-    .form-control-custom {
-        padding: 0.875rem 1rem 0.875rem 3rem;
-        border: 1px solid var(--gray-300);
-        border-radius: 0.5rem;
-        font-size: 0.95rem;
-        transition: all 0.2s ease;
-    }
-
-        .form-control-custom:focus {
-            border-color: var(--primary-teal);
-            box-shadow: 0 0 0 0.25rem rgba(0, 124, 137, 0.25);
+        body {
+            background: linear-gradient(145deg, rgb(var(--bg-body-rgb)) 0%, rgb(233, 238, 243) 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: rgb(var(--text-primary-rgb));
+            min-height: 100vh;
+            position: relative;
+            animation: fadeInBody 0.8s ease-out;
         }
 
-        .form-control-custom::placeholder {
-            color: var(--gray-600);
+            /* Subtle animated background pattern */
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: radial-gradient(circle at 25% 50%, rgba(var(--accent-rgb), 0.02) 0%, transparent 50%);
+                pointer-events: none;
+                z-index: 0;
+                animation: slowShift 20s infinite alternate;
+            }
+
+        @@keyframes fadeInBody {
+            0%
+
+        {
+            opacity: 0;
         }
 
-    .input-icon {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--gray-600);
-        pointer-events: none;
-    }
-
-    .password-toggle {
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        color: var(--gray-600);
-        padding: 0.25rem;
-        cursor: pointer;
-    }
-
-        .password-toggle:hover {
-            color: var(--primary-teal);
+        100% {
+            opacity: 1;
         }
 
-    .form-check-input:checked {
-        background-color: var(--primary-teal);
-        border-color: var(--primary-teal);
-    }
-
-    .btn-login {
-        background: linear-gradient(to right, var(--primary-teal), var(--primary-teal-dark));
-        border: none;
-        padding: 0.875rem 1.5rem;
-        font-weight: 600;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-        color: white;
-    }
-
-        .btn-login:hover {
-            background: linear-gradient(to right, var(--primary-teal-dark), #005a65);
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 124, 137, 0.3);
         }
 
-        .btn-login:active {
+        @@keyframes slowShift {
+            0%
+
+        {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+
+        100% {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        }
+
+        .login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Card with entrance animation */
+        .login-card {
+            background: rgb(var(--bg-surface-rgb));
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: cardSlideUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @@keyframes cardSlideUp {
+            0%
+
+        {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        100% {
+            opacity: 1;
             transform: translateY(0);
         }
 
-        .btn-login i {
-            margin-right: 0.5rem;
         }
 
-    .forgot-password {
-        color: var(--primary-teal);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.9rem;
-    }
-
-        .forgot-password:hover {
-            color: var(--primary-teal-dark);
-            text-decoration: underline;
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 55px -12px rgba(0, 0, 0, 0.3);
         }
 
-    .divider {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        margin: 1.5rem 0;
-        color: var(--gray-600);
-    }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid var(--gray-300);
+        /* Header with gradient using RGB */
+        .login-header {
+            background: linear-gradient(135deg, rgb(var(--primary-rgb)) 0%, rgb(var(--primary-dark-rgb)) 100%);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .divider span {
-            padding: 0 1rem;
-            font-size: 0.85rem;
+        .login-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            animation: pulseGlow 2s infinite;
         }
 
-    .social-login {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
+        @@keyframes pulseGlow {
+            0%
 
-    .btn-social {
-        border: 1px solid var(--gray-300);
-        background: white;
-        border-radius: 0.5rem;
-        padding: 0.75rem;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        transition: all 0.2s ease;
-        font-size: 0.9rem;
-    }
-
-        .btn-social:hover {
-            border-color: var(--primary-teal);
-            background-color: var(--primary-teal-light);
+        {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
         }
 
-    .register-link {
-        text-align: center;
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--gray-200);
-        color: var(--gray-600);
-        font-size: 0.9rem;
-    }
+        70% {
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+        }
 
-        .register-link a {
-            color: var(--primary-teal);
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+
+        }
+
+        .login-card:hover .login-icon {
+            transform: scale(1.05);
+        }
+
+        .login-header h1 {
+            font-family: 'Space Grotesk', monospace;
             font-weight: 600;
-            text-decoration: none;
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.5s ease-out 0.2s both;
         }
 
-            .register-link a:hover {
-                color: var(--primary-teal-dark);
+        .login-header p {
+            opacity: 0.9;
+            margin: 0;
+            font-size: 0.95rem;
+            animation: fadeInUp 0.5s ease-out 0.3s both;
+        }
+
+        @@keyframes fadeInUp {
+            from
+
+        {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        }
+
+        /* Body Content */
+        .login-body {
+            padding: 2.5rem 2rem;
+        }
+
+        /* Form Groups with staggered animation */
+        .form-group {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideIn 0.4s ease-out forwards;
+        }
+
+            .form-group:nth-child(1) {
+                animation-delay: 0.05s;
+            }
+
+            .form-group:nth-child(2) {
+                animation-delay: 0.1s;
+            }
+
+        .form-check-group {
+            animation-delay: 0.15s;
+        }
+
+        .button-group {
+            animation-delay: 0.2s;
+        }
+
+        .divider-group {
+            animation-delay: 0.25s;
+        }
+
+        .social-group {
+            animation-delay: 0.3s;
+        }
+
+        .register-group {
+            animation-delay: 0.35s;
+        }
+
+        @@keyframes fadeSlideIn {
+            from
+
+        {
+            opacity: 0;
+            transform: translateX(-12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: rgb(var(--text-secondary-rgb));
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .form-label i {
+                font-size: 0.9rem;
+                color: rgb(var(--primary-rgb));
+                transition: color 0.2s;
+            }
+
+        /* Input field wrapper */
+        .input-field-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgb(var(--text-muted-rgb));
+            font-size: 1rem;
+            pointer-events: none;
+            z-index: 2;
+            transition: color 0.2s ease;
+        }
+
+        .form-control-custom {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1.5px solid rgb(var(--border-light-rgb));
+            border-radius: 14px;
+            background-color: rgb(var(--bg-surface-rgb));
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            color: rgb(var(--text-primary-rgb));
+        }
+
+            .form-control-custom:focus {
+                border-color: rgb(var(--accent-rgb));
+                box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15);
+                outline: none;
+                transform: scale(1.01);
+            }
+
+            .form-control-custom:hover {
+                border-color: rgb(var(--accent-rgb));
+            }
+
+        /* Password toggle button */
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: rgb(var(--text-muted-rgb));
+            cursor: pointer;
+            z-index: 3;
+            padding: 0.25rem;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+            .password-toggle:hover {
+                color: rgb(var(--primary-rgb));
+                transform: translateY(-50%) scale(1.1);
+            }
+
+        /* Remember me & Forgot password */
+        .form-check-input:checked {
+            background-color: rgb(var(--primary-rgb));
+            border-color: rgb(var(--primary-rgb));
+        }
+
+        .forgot-password {
+            color: rgb(var(--primary-rgb));
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+            .forgot-password:hover {
+                color: rgb(var(--primary-dark-rgb));
                 text-decoration: underline;
             }
 
-    .validation-message {
-        font-size: 0.8rem;
-        margin-top: 0.25rem;
-    }
+        /* Button with ripple effect */
+        .btn-login {
+            background: rgb(var(--primary-rgb));
+            border: none;
+            padding: 0.9rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            width: 100%;
+            color: white;
+            letter-spacing: 0.01em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            z-index: 1;
+        }
 
-    /* Responsive adjustments */
+            .btn-login::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                transform: translate(-50%, -50%);
+                transition: width 0.5s, height 0.5s;
+                z-index: -1;
+            }
 
-</style>
+            .btn-login:hover::before {
+                width: 300px;
+                height: 300px;
+            }
 
-<div class="login-wrapper">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="login-card">
-                    <!-- Header -->
-                    <div class="login-header">
-                        <div class="login-icon">
-                            <i class="bi bi-person-circle"></i>
-                        </div>
-                        <h1>Welcome Back</h1>
-                        <p>Sign in to your account to continue</p>
-                    </div>
+            .btn-login:hover {
+                background: rgb(var(--primary-dark-rgb));
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px -8px rgba(var(--primary-rgb), 0.4);
+            }
 
-                    <!-- Body -->
-                    <div class="login-body">
-                        <form asp-action="Login" method="post" novalidate>
-                            <!-- Username/Email -->
-                            <div class="input-group-custom">
-                                <label asp-for="Email" class="form-label">
-                                    <i class="bi bi-person"></i>
-                                    Username or Email
-                                </label>
-                                <div class="position-relative">
-                                    <span class="input-icon">
-                                        <i class="bi bi-person-fill"></i>
-                                    </span>
-                                    <input asp-for="Email"
-                                           class="form-control form-control-custom"
-                                           placeholder="Enter username or email"
-                                           type="text"
-                                           required>
-                                </div>
-                                <span asp-validation-for="Email" class="text-danger validation-message"></span>
+            .btn-login:active {
+                transform: translateY(1px);
+            }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: rgb(var(--text-muted-rgb));
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+            .divider::before,
+            .divider::after {
+                content: '';
+                flex: 1;
+                border-bottom: 1px solid rgb(var(--border-light-rgb));
+            }
+
+            .divider span {
+                padding: 0 1rem;
+            }
+
+        /* Social Login Buttons */
+        .social-login {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-social {
+            border: 1px solid rgb(var(--border-light-rgb));
+            background: white;
+            border-radius: 40px;
+            padding: 0.75rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+            .btn-social:hover {
+                border-color: rgb(var(--accent-rgb));
+                background: rgba(var(--accent-rgb), 0.05);
+                transform: translateY(-1px);
+            }
+
+        /* Register Link */
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgb(var(--border-light-rgb));
+            color: rgb(var(--text-secondary-rgb));
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+            .register-link a {
+                color: rgb(var(--primary-rgb));
+                font-weight: 700;
+                text-decoration: none;
+                transition: all 0.2s;
+                position: relative;
+            }
+
+                .register-link a::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 0;
+                    height: 1px;
+                    background: rgb(var(--primary-rgb));
+                    transition: width 0.3s ease;
+                }
+
+                .register-link a:hover::after {
+                    width: 100%;
+                }
+
+        /* Validation message */
+        .validation-message {
+            font-size: 0.75rem;
+            margin-top: 0.4rem;
+            font-weight: 500;
+            animation: shakeFade 0.3s ease-out;
+        }
+
+        @@keyframes shakeFade {
+            0%
+
+        {
+            opacity: 0;
+            transform: translateX(-5px);
+        }
+
+        50% {
+            transform: translateX(2px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        }
+
+        .text-danger {
+            color: rgb(var(--danger-rgb)) !important;
+        }
+
+        /* Responsive adjustments */
+        @@media (max-width: 576px) {
+            .login-wrapper {
+                padding: 1rem;
+            }
+
+            .login-header,
+            .login-body {
+                padding: 2rem 1.5rem;
+            }
+
+                .login-header h1 {
+                    font-size: 1.75rem;
+                }
+
+            .social-login {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="login-card">
+                        <!-- Header -->
+                        <div class="login-header">
+                            <div class="login-icon">
+                                <i class="bi bi-person-circle"></i>
                             </div>
+                            <h1>Welcome Back</h1>
+                            <p>Sign in to your account to continue</p>
+                        </div>
 
-                            <!-- Password -->
-                            <div class="input-group-custom">
-                                <label asp-for="Password" class="form-label">
-                                    <i class="bi bi-lock"></i>
-                                    Password
-                                </label>
-                                <div class="position-relative">
-                                    <span class="input-icon">
-                                        <i class="bi bi-key-fill"></i>
-                                    </span>
-                                    <input asp-for="Password"
-                                           class="form-control form-control-custom"
-                                           placeholder="Enter your password"
-                                           type="password"
-                                           id="password"
-                                           required>
-                                    <button type="button" class="password-toggle" id="togglePassword">
-                                        <i class="bi bi-eye"></i>
+                        <!-- Body -->
+                        <div class="login-body">
+                            <form asp-action="Login" method="post" novalidate>
+                                <!-- Email/Username -->
+                                <div class="form-group">
+                                    <label asp-for="Email" class="form-label">
+                                        <i class="bi bi-person"></i>
+                                        Username or Email
+                                    </label>
+                                    <div class="input-field-wrapper">
+                                        <span class="input-icon">
+                                            <i class="bi bi-person-fill"></i>
+                                        </span>
+                                        <input asp-for="Email"
+                                               class="form-control-custom"
+                                               placeholder="Enter username or email"
+                                               type="text"
+                                               required>
+                                    </div>
+                                    <span asp-validation-for="Email" class="validation-message text-danger"></span>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="form-group">
+                                    <label asp-for="Password" class="form-label">
+                                        <i class="bi bi-lock"></i>
+                                        Password
+                                    </label>
+                                    <div class="input-field-wrapper">
+                                        <span class="input-icon">
+                                            <i class="bi bi-key-fill"></i>
+                                        </span>
+                                        <input asp-for="Password"
+                                               class="form-control-custom"
+                                               placeholder="Enter your password"
+                                               type="password"
+                                               id="password"
+                                               required>
+                                        <button type="button" class="password-toggle" id="togglePassword">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                    <span asp-validation-for="Password" class="validation-message text-danger"></span>
+                                </div>
+
+                                <!-- Remember Me & Forgot Password -->
+                                <div class="d-flex justify-content-between align-items-center mb-4 form-check-group" style="opacity: 0; animation: fadeSlideIn 0.4s ease-out 0.15s forwards;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <a href="#" class="forgot-password">
+                                        Forgot password?
+                                    </a>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid mb-4 button-group" style="opacity: 0; animation: fadeSlideIn 0.4s ease-out 0.2s forwards;">
+                                    <button type="submit" class="btn-login">
+                                        <i class="bi bi-box-arrow-in-right"></i>
+                                        Sign In
                                     </button>
                                 </div>
-                                <span asp-validation-for="Password" class="text-danger validation-message"></span>
-                            </div>
 
-                            <!-- Remember Me & Forgot Password -->
-                            <div class="d-flex justify-content-between align-items-center mb-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
-                                    <label class="form-check-label" for="rememberMe">
-                                        Remember me
-                                    </label>
+                                <!-- Divider -->
+                                <div class="divider divider-group" style="opacity: 0; animation: fadeSlideIn 0.4s ease-out 0.25s forwards;">
+                                    <span>Or continue with</span>
                                 </div>
-                                <a href="#" class="forgot-password">
-                                    Forgot password?
-                                </a>
-                            </div>
 
-                            <!-- Submit Button -->
-                            <div class="d-grid mb-4">
-                                <button type="submit" class="btn btn-login py-2">
-                                    <i class="bi bi-box-arrow-in-right"></i>
-                                    Sign In
-                                </button>
-                            </div>
+                                <!-- Social Login -->
+                                <div class="social-login social-group" style="opacity: 0; animation: fadeSlideIn 0.4s ease-out 0.3s forwards;">
+                                    <button type="button" class="btn-social">
+                                        <i class="bi bi-google"></i>
+                                        Google
+                                    </button>
+                                    <button type="button" class="btn-social">
+                                        <i class="bi bi-facebook"></i>
+                                        Facebook
+                                    </button>
+                                </div>
 
-                            <!-- Divider -->
-                            <div class="divider">
-                                <span>Or continue with</span>
-                            </div>
-
-                            <!-- Social Login -->
-                            <div class="social-login">
-                                <button type="button" class="btn-social">
-                                    <i class="bi bi-google"></i>
-                                    Google
-                                </button>
-                                <button type="button" class="btn-social">
-                                    <i class="bi bi-facebook"></i>
-                                    Facebook
-                                </button>
-                            </div>
-
-                            <!-- Register Link -->
-                            <div class="register-link">
-                                Don't have an account?
-                                <a asp-controller="Account" asp-action="Register">Create Account</a>
-                            </div>
-                        </form>
+                                <!-- Register Link -->
+                                <div class="register-link register-group" style="opacity: 0; animation: fadeSlideIn 0.4s ease-out 0.35s forwards;">
+                                    Don't have an account?
+                                    <a asp-controller="Account" asp-action="Register">Create Account</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    // Toggle password visibility
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        const passwordInput = document.getElementById('password');
-        const icon = this.querySelector('i');
+    <script>
+        // Toggle password visibility
+        const togglePasswordBtn = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('password');
 
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            icon.classList.remove('bi-eye');
-            icon.classList.add('bi-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            icon.classList.remove('bi-eye-slash');
-            icon.classList.add('bi-eye');
+        if (togglePasswordBtn && passwordField) {
+            togglePasswordBtn.addEventListener('click', function () {
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                const icon = this.querySelector('i');
+                if (type === 'text') {
+                    icon.classList.remove('bi-eye');
+                    icon.classList.add('bi-eye-slash');
+                } else {
+                    icon.classList.remove('bi-eye-slash');
+                    icon.classList.add('bi-eye');
+                }
+            });
         }
-    });
 
-    // Form validation
-    const form = document.querySelector('form');
-    const inputs = form.querySelectorAll('input[required]');
+        // Form validation
+        const form = document.querySelector('form');
+        const inputs = form.querySelectorAll('input[required]');
 
-    form.addEventListener('submit', function(e) {
-        let isValid = true;
+        form.addEventListener('submit', function (e) {
+            let isValid = true;
 
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+
+        // Real-time validation on input
         inputs.forEach(input => {
-            if (!input.value.trim()) {
-                input.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                input.classList.remove('is-invalid');
-            }
-        });
+            input.addEventListener('input', function () {
+                if (this.value.trim()) {
+                    this.classList.remove('is-invalid');
+                }
+            });
 
-        if (!isValid) {
-            e.preventDefault();
-        }
-    });
-
-    // Real-time validation on input
-    inputs.forEach(input => {
-        input.addEventListener('input', function() {
-            if (this.value.trim()) {
-                this.classList.remove('is-invalid');
-            }
+            input.addEventListener('blur', function () {
+                if (!this.value.trim()) {
+                    this.classList.add('is-invalid');
+                }
+            });
         });
+    </script>
 
-        input.addEventListener('blur', function() {
-            if (!this.value.trim()) {
-                this.classList.add('is-invalid');
-            }
-        });
-    });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
